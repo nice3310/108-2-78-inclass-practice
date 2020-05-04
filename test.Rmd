@@ -26,3 +26,68 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r}
+
+vector1<-c(1,2,3)
+
+vector2<-c(4,5,6)
+
+vector3<-c(vector1,vector2)
+
+
+vector3
+
+str(vector3)
+```
+
+
+
+```{r}
+
+# 10位學生的主系
+majors10_char <- c('經濟學系','社會學系','社會學系','經濟學系','經濟學系','社會學系','經濟學系','經濟學系','經濟學系','社會學系')
+
+typeof(majors10_char)
+class(majors10_char)
+
+majors10_factor <- factor(majors10_char)
+# 或
+majors10_factor <- factor(
+  c('經濟學系','社會學系','社會學系','經濟學系','經濟學系','社會學系','經濟學系','經濟學系','經濟學系','社會學系')
+)
+
+as.integer(majors10_factor)
+majors10_factor
+
+
+```
+
+
+
+```{r}
+today <- list(
+  list("台北市",c(highest_temp = 25),c(lowest_temp = 18)),
+  list("新北市",highest_temp=c(highest_temp = 24),c(lowest_temp = 15)))
+tomorrow <- list(
+  list("台北市",c(highest_temp = 25),c(lowest_temp = 18)),
+  list("新北市",c(highest_temp = 24),c(lowest_temp = 15)))
+
+weather <- list(today,tomorrow)
+
+weather[[1]][[2]][["highest_temp"]]
+```
+
+
+```{r}
+
+a<-5L
+b<-4
+
+c<-a+b
+c
+typeof(c)
+
+```
+

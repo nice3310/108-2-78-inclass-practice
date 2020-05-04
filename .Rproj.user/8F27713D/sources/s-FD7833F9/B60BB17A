@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588530778405.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B60BB17A",
+    "lastKnownWriteTime" : 3026101979808,
+    "last_content_update" : 1588530778405,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "E111D4E6",
+        "caption" : "badEmployers",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=badEmployers&cache_key=E111D4E6",
+        "displayedObservations" : "2000",
+        "environment" : "",
+        "expression" : "badEmployers",
+        "object" : "badEmployers",
+        "preview" : "0",
+        "totalObservations" : "2000",
+        "variables" : "8"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
