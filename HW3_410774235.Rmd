@@ -64,9 +64,12 @@ table_countsByArticle
 提示：table class物件為integer type，可對它取max()得到最大值。
 ```{r ans13}
 
+pickmax<-table_countsByArticle==max(table_countsByArticle)
+
+pickmax
+
 mostViolatedArticle<-table_countsByArticle[pickmax]
 
-pickmax<-table_countsByArticle==max(table_countsByArticle)
 
 mostViolatedArticle
 ```
@@ -75,9 +78,14 @@ mostViolatedArticle
 找出最常違反條款的法條內容（可參見lawContent這個元素），並將此內容存在mostViolatedArticle_content (class character, length=1)
 ```{r ans14}
 
-table(badEmployers$lawContent)
+table(badEmployers$lawContent)->tablecontent
 
-mostViolatedArticle_content<-"延長工作時間超過法令規定"
+tablecontent==max(tablecontent)->maxcontent
+
+tablecontent[maxcontent]->intermax
+
+
+names(intermax)->mostViolatedArticle_content
 
 mostViolatedArticle_content
 ```
@@ -86,13 +94,22 @@ mostViolatedArticle_content
 找出處份日期最常出現的月份並存在popularSentenceMonth（class character, length=1）：
 ```{r ans15}
 
+date<-badEmployers$dt
 
-str(badEmployers$dt)
-
-table(badEmployers$dt)
+datemonth<-month(date)
 
 
-# popularSentenceMonth
+table (datemonth)->tablemonth
+
+tablemonth
+
+tablemonth==max(tablemonth)->max
+
+tablemonth[max]->popular
+
+names(popular)->popularSentenceMonth
+
+popularSentenceMonth
 ```
 
 ## 2 個人申請
@@ -117,13 +134,40 @@ source("https://www.dropbox.com/s/5oy56om4q0857tt/student10.R?dl=1",encoding = "
 小知識:
 factor是從1開始的整數，沒有0喔。
 ```{r ans21}
-# chinese
+
+
+table$`國文`
+
+chi<-order(factor(table$`國文`,levels=table$`國文`,ordered=T))
+
+
+class(chi)
+
+factor(chi,order=T)->chinese
+
+class(levels(chinese))
+
+
+class(chinese)
+
+chinese
+
 ```
 
 ### 2.2 str_detect()
 請取出10位學生中志願為北大的學生名字並存到名為ntpu_namelist的答案物件(class為chr):
 ```{r ans22}
-# ntpu_namelist
+
+str(students10)
+
+ntpuornot<-str_detect(students10$`志願`,"北大")
+
+ntpuornot
+
+
+students10$`姓名`[ntpuornot]->ntpu_namelist
+
+ntpu_namelist
 ```
 
 ### 2.3 vector計算&logical應用練習
@@ -138,7 +182,22 @@ factor是從1開始的整數，沒有0喔。
 志願沒有填北大經濟的人可以進一階篩選嗎?
 logical儲存的本質是甚麼?
 ```{r ans23}
-# ntpu_econtpu_eco
+
+
+
+chiok<-students10$`國文`>=12
+
+
+bothok<-(students10$`英文`+students10$`數學`)>=26
+
+
+ntpuornot*chiok*bothok->right
+
+as.logical(right)->realright
+
+students10$`姓名`[realright]->ntpu_econtpu_eco
+
+ntpu_econtpu_eco
 ```
 
 ### 2.4 %in%
@@ -149,5 +208,17 @@ logical儲存的本質是甚麼?
 
 請將榜單文字儲存到名為congrats的答案物件(class為chr)。
 ```{r ans24}
-# congrats
+str(students10)
+
+ntpu<-str_detect(students10$`志願`,"北大經濟")
+
+student<-students10$`姓名`[ntpu]
+
+`student`%in%`namelist`->con
+
+student[con]->realstudent
+
+paste0(c("恭喜"),c(" "),`realstudent`,c(" "),"同學錄取國立臺北大學經濟系")->congrats
+
+congrats
 ```
